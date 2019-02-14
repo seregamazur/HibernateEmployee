@@ -1,12 +1,12 @@
 package work.model;
 
-public abstract class BaseEmployee implements Comparable<BaseEmployee> {
+public class BaseEmployee implements Comparable<BaseEmployee> {
     private Post post;
     private EmployeeInfo info;
     private SalaryType salaryType;
     private final int ID;
 
-    protected BaseEmployee(int ID,EmployeeInfo info,Post post,SalaryType salaryType) {
+    public BaseEmployee(int ID,EmployeeInfo info,Post post,SalaryType salaryType) {
         this.ID = ID;
         this.info = info;
         this.post = post;
