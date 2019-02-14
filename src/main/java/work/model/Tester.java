@@ -1,13 +1,12 @@
 package work.model;
 
-public class FixedSalaryEmployee extends BaseEmployee {
+public class Tester extends BaseEmployee implements SalaryType {
     private double salary;
 
-    public FixedSalaryEmployee(EmployeeInfo info, double salary) {
-        super(info);
+    public Tester(BaseEmployee employee, double salary) {
+        super(employee.getID(),employee.getInfo(),employee.getPost(),employee.getSalaryType());
         this.salary = salary;
     }
-
 
     @Override
     public double getSalary() {

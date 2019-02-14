@@ -1,6 +1,6 @@
 package work.model;
 
-public class HourRatedEmployee extends BaseEmployee {
+public class Cleaner extends BaseEmployee implements SalaryType{
 
     private int hoursRate;
     private double salary;
@@ -15,8 +15,8 @@ public class HourRatedEmployee extends BaseEmployee {
 
 
 
-    public HourRatedEmployee(EmployeeInfo info, int hoursRate, double salary) {
-        super(info);
+    public Cleaner(BaseEmployee employee, int hoursRate, double salary) {
+        super(employee.getID(),employee.getInfo(),employee.getPost(),employee.getSalaryType());
         this.hoursRate = hoursRate;
         this.salary = salary * this.hoursRate;
     }
