@@ -17,7 +17,7 @@ public abstract class BaseEmployee implements Comparable<BaseEmployee> {
     public abstract void setSalary(double salary);
 
     private String getName() {
-        return getInfo().getName();
+        return getInfo().getFc();
     }
 
     public EmployeeInfo getInfo() {
@@ -27,7 +27,7 @@ public abstract class BaseEmployee implements Comparable<BaseEmployee> {
     @Override
     public String toString() {
         return "ID:" + this.info.getID() + " " + "name:" +
-                this.info.getName() + " " + "surname:" + this.info.getSurname() + " " + "salary:" +
+                this.info.getFc() + " " + "FC:" + this.info.getFc() + " " + "salary:" +
                 this.getSalary();
     }
 

@@ -1,26 +1,42 @@
 package work.model;
 
+import java.time.LocalDate;
+
 public class EmployeeInfo {
 
-    private final String name;
-    private final String surname;
+    private final String fc;
     private final int ID;
+    private LocalDate recruitment;
+    private LocalDate dissmisal;
+
+    public EmployeeInfo(int ID, String fc, LocalDate recruitment) {
+        this.ID = ID;
+        this.fc = fc;
+        this.recruitment = recruitment;
+    }
+
+    public LocalDate getRecruitment() {
+        return recruitment;
+    }
+
+    public LocalDate getDissmisal() {
+        return dissmisal;
+    }
+
+    public void setRecruitment(LocalDate recruitment) {
+        this.recruitment = recruitment;
+    }
+
+    public void setDissmisal(LocalDate dissmisal) {
+        this.dissmisal = dissmisal;
+    }
 
     public int getID() {
         return ID;
     }
 
-    public String getName() {
-        return name;
+    public String getFc() {
+        return fc;
     }
 
-    public String getSurname() {
-        return surname;
-    }
-
-    public EmployeeInfo(int ID, String name, String surname) {
-        this.ID = ID;
-        this.name = name;
-        this.surname = surname;
-    }
 }
