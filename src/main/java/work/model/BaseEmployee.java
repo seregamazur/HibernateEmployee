@@ -1,15 +1,21 @@
 package work.model;
 
+import java.time.LocalDate;
+
 public class BaseEmployee implements Comparable<BaseEmployee> {
     private Post post;
     private EmployeeInfo info;
     private SalaryType salaryType;
     private final int ID;
+    private LocalDate recruitment;
+    private LocalDate dissmisal;
 
-    public BaseEmployee(int ID,EmployeeInfo info,Post post,SalaryType salaryType) {
+    public BaseEmployee(int ID,EmployeeInfo info,Post post,
+                        LocalDate recruitment,SalaryType salaryType) {
         this.ID = ID;
         this.info = info;
         this.post = post;
+        this.recruitment = recruitment;
         this.salaryType = salaryType;
     }
 
@@ -50,6 +56,22 @@ public class BaseEmployee implements Comparable<BaseEmployee> {
 
     public int getID() {
         return ID;
+    }
+
+    public LocalDate getRecruitment() {
+        return recruitment;
+    }
+
+    public LocalDate getDissmisal() {
+        return dissmisal;
+    }
+
+    public void setRecruitment(LocalDate recruitment) {
+        this.recruitment = recruitment;
+    }
+
+    public void setDissmisal(LocalDate dissmisal) {
+        this.dissmisal = dissmisal;
     }
     @Override
     public int compareTo(BaseEmployee employee) {
