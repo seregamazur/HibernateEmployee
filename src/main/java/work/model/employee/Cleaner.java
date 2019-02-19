@@ -1,6 +1,5 @@
 package work.model.employee;
 
-import work.model.employee.BaseEmployee;
 
 public class Cleaner extends BaseEmployee {
 
