@@ -1,13 +1,25 @@
 package work.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDate;
-
+@Entity
+@Table(name = "employee")
 public class BaseEmployee implements Comparable<BaseEmployee> {
-    private Post post;
-    private EmployeeInfo info;
-    private SalaryType salaryType;
+    @Id
+    @Column(name = "id")
     private final int ID;
+    @Column(name = "info")
+    private EmployeeInfo info;
+    @Column(name = "post")
+    private Post post;
+    @Column(name = "type")
+    private SalaryType salaryType;
+    @Column(name = "recruitment_date")
     private LocalDate recruitment;
+    @Column(name = "dismissal_date")
     private LocalDate dissmisal;
 
     public BaseEmployee(int ID,EmployeeInfo info,Post post,
