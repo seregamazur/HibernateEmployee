@@ -1,7 +1,10 @@
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import work.model.*;
+import work.model.employee.BaseEmployee;
+import work.model.employee.EmployeeInfo;
+import work.model.employee.Post;
+import work.model.employee.Tester;
 
 import java.time.LocalDate;
 

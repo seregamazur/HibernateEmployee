@@ -1,15 +1,13 @@
-package work.model;
+package work.model.employee;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "employee_info")
 public class EmployeeInfo {
     @Id
     @Column(name = "id")
+    @GeneratedValue
     private final int ID;
     @Column(name = "fc")
     private final String fc;

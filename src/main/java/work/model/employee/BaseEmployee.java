@@ -1,29 +1,30 @@
-package work.model;
+package work.model.employee;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import work.model.salary.Salary;
+
+import javax.persistence.*;
 import java.time.LocalDate;
+
 @Entity
 @Table(name = "employee")
 public class BaseEmployee implements Comparable<BaseEmployee> {
     @Id
     @Column(name = "id")
+    @GeneratedValue
     private final int ID;
     @Column(name = "info")
     private EmployeeInfo info;
     @Column(name = "post")
     private Post post;
     @Column(name = "type")
-    private SalaryType salaryType;
+    private Salary salaryType;
     @Column(name = "recruitment_date")
     private LocalDate recruitment;
     @Column(name = "dismissal_date")
     private LocalDate dissmisal;
 
-    public BaseEmployee(int ID,EmployeeInfo info,Post post,
-                        LocalDate recruitment,SalaryType salaryType) {
+    public BaseEmployee(int ID, EmployeeInfo info, Post post,
+                        LocalDate recruitment, Salary salaryType) {
         this.ID = ID;
         this.info = info;
         this.post = post;
@@ -31,9 +32,9 @@ public class BaseEmployee implements Comparable<BaseEmployee> {
         this.salaryType = salaryType;
     }
 
-    public void setInfo(EmployeeInfo info) {
+   /* public void setInfo(EmployeeInfo info) {
         this.info = info;
-    }
+    }*/
 
     private String getName() {
         return getInfo().getFc();
@@ -49,23 +50,23 @@ public class BaseEmployee implements Comparable<BaseEmployee> {
                 this.info.getFc() + " " + "FC:" + this.info.getFc() + " " + "salary:" +
                 salaryType.getSalary();
     }
-
+    @Enumerated(EnumType.ORDINAL)
     public Post getPost() {
         return post;
     }
 
-    public void setPost(Post post) {
+    /*public void setPost(Post post) {
         this.post = post;
-    }
+    }*/
 
-    public SalaryType getSalaryType() {
+    public Salary getSalaryType() {
         return salaryType;
     }
-
+/*
     public void setSalaryType(SalaryType salaryType) {
         this.salaryType = salaryType;
     }
-
+*/
     public int getID() {
         return ID;
     }
@@ -77,7 +78,7 @@ public class BaseEmployee implements Comparable<BaseEmployee> {
     public LocalDate getDissmisal() {
         return dissmisal;
     }
-
+/*
     public void setRecruitment(LocalDate recruitment) {
         this.recruitment = recruitment;
     }
@@ -85,6 +86,7 @@ public class BaseEmployee implements Comparable<BaseEmployee> {
     public void setDissmisal(LocalDate dissmisal) {
         this.dissmisal = dissmisal;
     }
+*/
     @Override
     public int compareTo(BaseEmployee employee) {
         if (Double.compare(salaryType.getSalary(), employee.salaryType.getSalary()) == 0) {

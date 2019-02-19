@@ -1,6 +1,8 @@
-package work.model;
+package work.model.employee;
 
-public class Cleaner extends BaseEmployee implements SalaryType{
+import work.model.employee.BaseEmployee;
+
+public class Cleaner extends BaseEmployee {
 
     private int hoursRate;
     private double salary;
