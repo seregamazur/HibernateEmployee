@@ -1,6 +1,5 @@
 package work.model.employee;
 
-import work.model.salary.Salary;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -16,20 +15,17 @@ public class BaseEmployee implements Comparable<BaseEmployee> {
     private EmployeeInfo info;
     @Column(name = "post")
     private Post post;
-    @Column(name = "type")
-    private Salary salaryType;
     @Column(name = "recruitment_date")
     private LocalDate recruitment;
     @Column(name = "dismissal_date")
     private LocalDate dissmisal;
 
     public BaseEmployee(int ID, EmployeeInfo info, Post post,
-                        LocalDate recruitment, Salary salaryType) {
+                        LocalDate recruitment) {
         this.ID = ID;
         this.info = info;
         this.post = post;
         this.recruitment = recruitment;
-        this.salaryType = salaryType;
     }
 
    /* public void setInfo(EmployeeInfo info) {
@@ -48,7 +44,7 @@ public class BaseEmployee implements Comparable<BaseEmployee> {
     public String toString() {
         return "ID:" + this.info.getID() + " " + "name:" +
                 this.info.getFc() + " " + "FC:" + this.info.getFc() + " " + "salary:" +
-                salaryType.getSalary();
+
     }
     @Enumerated(EnumType.ORDINAL)
     public Post getPost() {
@@ -59,9 +55,6 @@ public class BaseEmployee implements Comparable<BaseEmployee> {
         this.post = post;
     }*/
 
-    public Salary getSalaryType() {
-        return salaryType;
-    }
 /*
     public void setSalaryType(SalaryType salaryType) {
         this.salaryType = salaryType;

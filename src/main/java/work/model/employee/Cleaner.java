@@ -1,10 +1,12 @@
 package work.model.employee;
 
 
+
+import java.time.LocalDate;
+
 public class Cleaner extends BaseEmployee {
 
     private int hoursRate;
-    private double salary;
 
     public int getHoursRate() {
         return hoursRate;
@@ -14,23 +16,13 @@ public class Cleaner extends BaseEmployee {
         this.hoursRate = hoursRate;
     }
 
-
-
-    public Cleaner(BaseEmployee employee, int hoursRate, double salary) {
-        super(employee.getID(),employee.getInfo(),employee.getPost(),employee.getSalaryType());
+    public Cleaner(BaseEmployee employee, LocalDate recruitmentDate, int hoursRate, double salary) {
+        super(employee.getID(),employee.getInfo(),employee.getPost(),recruitmentDate);
         this.hoursRate = hoursRate;
-        this.salary = salary * this.hoursRate;
     }
 
-    @Override
-    public double getSalary() {
-        return salary * hoursRate;
-    }
 
-    @Override
-    public void setSalary(double salary) {
-        this.salary = salary;
-    }
+
 
 
 }
