@@ -43,7 +43,7 @@ public class BaseEmployee implements Comparable<BaseEmployee> {
     @Override
     public String toString() {
         return "ID:" + this.info.getID() + " " + "name:" +
-                this.info.getFc() + " " + "FC:" + this.post. + " " + "salary:";
+                this.info.getFc() + " " + "FC:" + this.post.getSalary() + " " + "salary:";
 
     }
     @Enumerated(EnumType.ORDINAL)
