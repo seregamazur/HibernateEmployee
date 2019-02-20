@@ -43,7 +43,7 @@ public class BaseEmployee implements Comparable<BaseEmployee> {
     @Override
     public String toString() {
         return "ID:" + this.info.getID() + " " + "name:" +
-                this.info.getFc() + " " + "FC:" + this.info.getFc() + " " + "salary:" +
+                this.info.getFc() + " " + "FC:" + this.post. + " " + "salary:";
 
     }
     @Enumerated(EnumType.ORDINAL)
@@ -55,11 +55,7 @@ public class BaseEmployee implements Comparable<BaseEmployee> {
         this.post = post;
     }*/
 
-/*
-    public void setSalaryType(SalaryType salaryType) {
-        this.salaryType = salaryType;
-    }
-*/
+
     public int getID() {
         return ID;
     }
@@ -82,8 +78,8 @@ public class BaseEmployee implements Comparable<BaseEmployee> {
 */
     @Override
     public int compareTo(BaseEmployee employee) {
-        if (Double.compare(salaryType.getSalary(), employee.salaryType.getSalary()) == 0) {
+        if (Double.compare(post.getSalary(), employee.post.getSalary()) == 0) {
             return this.getName().compareTo(employee.getName());
-        } else return Double.compare(salaryType.getSalary(), employee.salaryType.getSalary());
+        } else return Double.compare(post.getSalary(), employee.post.getSalary());
     }
 }
