@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "employee")
-public class BaseEmployee implements Comparable<BaseEmployee> {
+public abstract class BaseEmployee implements Comparable<BaseEmployee> {
     @Id
     @Column(name = "id")
     @GeneratedValue
@@ -19,14 +19,18 @@ public class BaseEmployee implements Comparable<BaseEmployee> {
     private LocalDate recruitment;
     @Column(name = "dismissal_date")
     private LocalDate dissmisal;
+    private float salary;
+
 
     public BaseEmployee(int ID, EmployeeInfo info, Post post,
-                        LocalDate recruitment) {
+                        LocalDate recruitment, float salary) {
         this.ID = ID;
         this.info = info;
         this.post = post;
         this.recruitment = recruitment;
+        this.salary = salary;
     }
+
 
    /* public void setInfo(EmployeeInfo info) {
         this.info = info;
@@ -43,9 +47,10 @@ public class BaseEmployee implements Comparable<BaseEmployee> {
     @Override
     public String toString() {
         return "ID:" + this.info.getID() + " " + "name:" +
-                this.info.getFc() + " " + "FC:" + this.post.getSalary() + " " + "salary:";
+                this.info.getFc() + " " + "FC:" + this.getSalary() + " " + "salary:";
 
     }
+
     @Enumerated(EnumType.ORDINAL)
     public Post getPost() {
         return post;
@@ -67,19 +72,28 @@ public class BaseEmployee implements Comparable<BaseEmployee> {
     public LocalDate getDissmisal() {
         return dissmisal;
     }
-/*
-    public void setRecruitment(LocalDate recruitment) {
-        this.recruitment = recruitment;
+
+    /*
+        public void setRecruitment(LocalDate recruitment) {
+            this.recruitment = recruitment;
+        }
+
+        public void setDissmisal(LocalDate dissmisal) {
+            this.dissmisal = dissmisal;
+        }
+    */
+    public float getSalary() {
+        return salary;
     }
 
-    public void setDissmisal(LocalDate dissmisal) {
-        this.dissmisal = dissmisal;
+    public void setSalary(float salary) {
+        this.salary = salary;
     }
-*/
+
     @Override
     public int compareTo(BaseEmployee employee) {
-        if (Double.compare(post.getSalary(), employee.post.getSalary()) == 0) {
+        if (Double.compare(this.getSalary(), employee.getSalary()) == 0) {
             return this.getName().compareTo(employee.getName());
-        } else return Double.compare(post.getSalary(), employee.post.getSalary());
+        } else return Double.compare(this.getSalary(), employee.getSalary());
     }
 }
