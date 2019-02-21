@@ -5,6 +5,7 @@ import java.time.LocalDate;
 public class HourRatedSalary extends BaseEmployee {
     private float salary;
     private int hourRate;
+
     public HourRatedSalary(int ID, EmployeeInfo info, Post post, LocalDate recruitment,
                            float salary, int hourRate) {
         super(ID, info, post, recruitment,salary);

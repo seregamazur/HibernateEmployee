@@ -19,8 +19,8 @@ public abstract class BaseEmployee implements Comparable<BaseEmployee> {
     private LocalDate recruitment;
     @Column(name = "dismissal_date")
     private LocalDate dissmisal;
+    @Column(name = "salary")
     private float salary;
-
 
     public BaseEmployee(int ID, EmployeeInfo info, Post post,
                         LocalDate recruitment, float salary) {
