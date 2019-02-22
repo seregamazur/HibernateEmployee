@@ -1,3 +1,4 @@
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -5,6 +6,14 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+import work.model.employee.BaseEmployee;
+import work.model.employee.EmployeeInfo;
+import work.model.employee.Post;
+import work.model.employee.Tester;
+
+import java.time.LocalDate;
+import java.util.Iterator;
+import java.util.List;
 
 @RunWith(JUnit4.class)
 public class CreateEmployeeTest {
@@ -22,9 +31,10 @@ public class CreateEmployeeTest {
         CreateEmployeeTest ME = new CreateEmployeeTest();
 
         /* Add few employee records in database */
-        Integer empID1 = ME.addEmployee("", "Ali", 1000);
-        Integer empID2 = ME.addEmployee("Daisy", "Das", 5000);
-        Integer empID3 = ME.addEmployee("John", "Paul", 10000);
+        Integer empID1 = ME.addEmployee(new Tester(1,new EmployeeInfo(1,"Serhiy Mazur"), Post.TESTER,
+                LocalDate.of(2019,01,01),5000));
+        Integer empID2 = ME.addEmployee(new Tester(1,new EmployeeInfo(1,"Serhiya Mazur"), Post.TESTER,
+                LocalDate.of(2019,01,01),9000));
 
         /* List down all the employees */
         ME.listEmployees();
@@ -40,14 +50,13 @@ public class CreateEmployeeTest {
     }
 
     /* Method to CREATE an employee in the database */
-    public Integer addEmployee(String fname, String lname, int salary) {
+    public Integer addEmployee(BaseEmployee employee) {
         Session session = factory.openSession();
         Transaction tx = null;
         Integer employeeID = null;
 
         try {
             tx = session.beginTransaction();
-            Employee employee = new Employee(fname, lname, salary);
             employeeID = (Integer) session.save(employee);
             tx.commit();
         } catch (HibernateException e) {
@@ -66,12 +75,11 @@ public class CreateEmployeeTest {
 
         try {
             tx = session.beginTransaction();
-            List employees = session.createQuery("FROM Employee").list();
+            List employees = session.createQuery("from employee").list();
             for (Iterator iterator = employees.iterator(); iterator.hasNext(); ) {
-                Employee employee = (Employee) iterator.next();
-                System.out.print("First Name: " + employee.getFirstName());
-                System.out.print("  Last Name: " + employee.getLastName());
-                System.out.println("  Salary: " + employee.getSalary());
+                BaseEmployee employee = (BaseEmployee) iterator.next();
+                System.out.print("FC: " + employee.getInfo().getFc());
+                System.out.print("Salary: " + employee.getSalary());
             }
             tx.commit();
         } catch (HibernateException e) {
@@ -89,7 +97,7 @@ public class CreateEmployeeTest {
 
         try {
             tx = session.beginTransaction();
-            Employee employee = (Employee) session.get(Employee.class, EmployeeID);
+            BaseEmployee employee = session.get(BaseEmployee.class, EmployeeID);
             employee.setSalary(salary);
             session.update(employee);
             tx.commit();
@@ -108,7 +116,7 @@ public class CreateEmployeeTest {
 
         try {
             tx = session.beginTransaction();
-            Employee employee = (Employee) session.get(Employee.class, EmployeeID);
+            BaseEmployee employee =  session.get(BaseEmployee.class, EmployeeID);
             session.delete(employee);
             tx.commit();
         } catch (HibernateException e) {
